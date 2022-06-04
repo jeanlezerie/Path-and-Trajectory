@@ -51,13 +51,13 @@ q3 = np.array([deg_to_rad(float(input("T1 = "))),
                 deg_to_rad(float(input("T3 = ")))]) # 3rd path
 
 # Trajectory commands
-traj1 = rtb.jtraj(q_init,q_pick,30) #time vector or steps
+traj1 = rtb.jtraj(q_init,q_pick,25) #time vector or steps
 print(traj1)
 print(traj1.q)
-traj2 = rtb.jtraj(q_pick,q2,30)
+traj2 = rtb.jtraj(q_pick,q2,25)
 print(traj2)
 print(traj2.q)
-traj3 = rtb.jtraj(q2,q3,30)
+traj3 = rtb.jtraj(q2,q3,25)
 print(traj3)
 print(traj3.q)
 
