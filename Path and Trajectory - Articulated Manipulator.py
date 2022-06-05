@@ -36,9 +36,9 @@ def deg_to_rad(T):
 
 # q Paths
 # for ARTICULATED joint variables = ([T1,T2,T3])
-q_init = np.array([0,0,0]) # origin
+q0 = np.array([0,0,0]) # origin
 
-q_pick = np.array([deg_to_rad(float(input("T1 = "))),
+q1 = np.array([deg_to_rad(float(input("T1 = "))),
                 deg_to_rad(float(input("T2 = "))),
                 deg_to_rad(float(input("T3 = ")))]) # 1st path
 
@@ -51,10 +51,10 @@ q3 = np.array([deg_to_rad(float(input("T1 = "))),
                 deg_to_rad(float(input("T3 = ")))]) # 3rd path
 
 # Trajectory commands
-traj1 = rtb.jtraj(q_init,q_pick,25) #time vector or steps
+traj1 = rtb.jtraj(q0,q1,25) #time vector or steps
 print(traj1)
 print(traj1.q)
-traj2 = rtb.jtraj(q_pick,q2,25)
+traj2 = rtb.jtraj(q1,q2,25)
 print(traj2)
 print(traj2.q)
 traj3 = rtb.jtraj(q2,q3,25)
@@ -69,7 +69,6 @@ y2 = 1.0
 z1 = -1.0
 z2 = 1.0
 
-#plot command
 # for joint variable vs Time(s) table
 rtb.qplot(traj1.q)
 rtb.qplot(traj2.q)
@@ -80,4 +79,5 @@ Arti_Elbow.plot(traj1.q,limits=[x1,x2,y1,y2,z1,z2],movie='Arti_Elbow_1.gif')
 Arti_Elbow.plot(traj2.q,limits=[x1,x2,y1,y2,z1,z2],movie='Arti_Elbow_2.gif')
 Arti_Elbow.plot(traj3.q,limits=[x1,x2,y1,y2,z1,z2],movie='Arti_Elbow_3.gif')
 
-#Arti_Elbow.teach(jointlabels=1)
+#plot command
+Arti_Elbow.teach(jointlabels=1)
